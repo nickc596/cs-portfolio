@@ -1,0 +1,42 @@
+/*
+    Document   : navbar.css
+    Created on : 2015-09-03 04:39 PM
+    Author     : nickc596
+    Description:
+    Purpose of the stylesheet follows.
+    To change this template use Tools | Templates.
+*/
+
+#nav-bar li{
+    display:inline;
+    text-align:center;
+    font-size:28px;
+    border:groove;
+    color:pink;
+    
+}
+
+#nav-bar{
+    text-align:center;
+    border:double;
+    border-width:14px;
+    color:pink;
+    
+    
+    
+    
+}
+
+#nav-bar a{
+    
+    color:yellow;
+}
+
+#nav-bar h6{
+    text-align:center;
+    border:dotted;
+    color:yellow;
+    border-color:pink;
+    font-size:30px;
+    
+}
