@@ -17,22 +17,63 @@
         <li><a href="info.html">Info page</a></li>
         <li><a href="calc.html">Calculator</a></li>
         <li><a href="todolist.html">To do list</a></li>
+        <li><a href="dice.html">Dice Roller</a></li>
     </ul>
     </div>
     <!-- end of Nav Bar -->
-  <header><h1>My Todo List</h1></header>
   <section>
-    <div id="todolist"></div>
-    <form id="myform">
+  <style>
+  header {
+        color: #ebe500;
+      }
+
+  form {
+    width: 250px;
+    background: #333;
+    color: #ebe500;
+    border-radius: 5px;
+    padding: 10px 10px; /* makes the border look nicer */
+  }
+  
+  #newitem {
+    width: 185px;
+  }
+  
+  #todolist {
+    width: 280px;
+    margin: 20px 10px;
+  }
+  
+  #todolist li {
+    border-radius: 5px;
+    list-style: none; /* removes the bullet */
+    background: #eee;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    position: relative;
+  }
+ 
+  #todolist li:hover:after {
+    content: 'Remove';
+    color: #f22419;
+    position: absolute;
+    right: 5px;    
+  }
+</style>
+<header><h1><yellow>My Todo List</h1></header>
+  <section>
+      <ul id="todolist"></ul>
+    <form action="#" method="post">
       <div>
-        <div>Add item</div>
-        <input type="text" id="newitem" />
-        <input type="submit" />
-        
-        <button id="AddBtn">Add</button>
+        <label for="newitem">New Todo item</label>
+        <input type="text" name="newitem" id="newitem"/>
+        <input type="submit" value="Add" />
       </div>
     </form>
-  </section>
+  
+  
+  </section> 
+  
   <footer>
   </footer>
     

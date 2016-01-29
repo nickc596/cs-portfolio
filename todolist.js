@@ -1,15 +1,24 @@
-var todo = document.getElementById('todolist'),
-    form = document.getElementById('myform'),
-    field = document.getElementById('newitem');
+
+var todo = document.querySelector( '#todolist' ),
+    form = document.querySelector( 'form' ),
+    field = document.querySelector( '#newitem' );
     
-form.addEventListener( 'submit', function(evt) {
+form.addEventListener( 'submit', function( ev ) {
   var text = field.value;
-  todo.innerHTML += '<div>' + text + '</div>';
-  evt.preventDefault();
+  if ( text !== '' ) {
+    todo.innerHTML += '<li>' + text + '</li>';
+    field.value = '';
+    field.focus();
+  }
+  ev.preventDefault();
 }, false);
 
-todo.addEventListener( 'click', function(evt) {
-  var tar = evt.target;
-  tar.parentNode.removeChild(tar);
-  evt.preventDefault();
+todo.addEventListener( 'click', function( ev ) {
+  var t = ev.target;
+  if ( t.tagName === 'LI' ) {
+    t.parentNode.removeChild( t );
+  };
+  ev.preventDefault();
 }, false);
+
+

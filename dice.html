@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+    <style>
+      body {
+    background-color: green;
+}  
+
+    </style>
+    <title>Roll the dice</title>
+    <link rel="stylesheet" type="text/css" href="navbar.css">
+      <body>
+        <p>
+        <!-- My Nav Bar -->
+    <div  id="nav-bar">
+    <h6 id="other-pages" class="text"><strong>My other pages</strong></h6>
+    <ul>
+        <li><a href="index.html">Intro Page</a></li>
+        <li><a href="aboutme.html">About Me</a></li>
+        <li><a href="htmlpage.html">About HTML</a></li>
+        <li><a href="hardware.html">Computer Hardware</a></li>
+        <li><a href="info.html">Info page</a></li>
+        <li><a href="calc.html">Calculator</a></li>
+        <li><a href="todolist.html">To do list</a></li
+        <div id="list"><li><a href="dice.html">Dice Roller</a></li></div>
+    </ul>
+    </div>
+    <!-- end of Nav Bar -->
+          <h1>
+            HELLO LADIES AND GENTLEMEN
+          </h1>
+          <h2>
+            <p>Click the button to display any 1 side of a dice</p>
+
+<button onclick="myFunction()">Click to display a side of a dice</button>
+<p>Click the dropdown to choose how many sides you want on a dice</p>
+<p>
+  <select id="dropdown">
+          <option value="2sides">2 sides</option>
+          <option value="3sides">3 sides</option>
+          <option value="4sides">4 sides</option>
+          <option value="5sides">5 sides</option>
+          <option value="6sides">6 sides</option>
+          <option value="7sides">7 sides</option>
+          <option value="8sides">8 sides</option>
+          <option value="9sides">9 sides</option>
+          <option value="10sides">10 sides</option>
+          <option value="11sides">11 sides</option>
+          <option value="12sides">12 sides</option>
+        </select>
+</p>
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+    var x;
+    
+    // document.getElementById("demo").innerHTML = x;
+    
+    switch(document.getElementById("dropdown").value){
+      case "2sides":
+        x = Math.floor((Math.random() * 2) + 1);
+        document.getElementById("demo").innerHTML = x;
+      break;
+      case "3sides":
+          x = Math.floor((Math.random() * 3) + 1);
+        document.getElementById("demo").innerHTML = x;
+      break;
+      case "4sides":
+        x = Math.floor((Math.random() * 4) + 1);
+        document.getElementById("demo").innerHTML = x;
+      break;
+      case "5sides":
+        x = Math.floor((Math.random() * 5) + 1);
+        document.getElementById("demo").innerHTML = x;
+      break;
+      case "6sides":
+        x = Math.floor((Math.random() * 6) + 1);
+        document.getElementById("demo").innerHTML = x;
+      break;
+      case "7sides":
+        x = Math.floor((Math.random() * 7) + 1);
+        document.getElementById("demo").innerHTML = x;
+      break;
+      case "8sides":
+        x = Math.floor((Math.random() * 8) + 1);
+        document.getElementById("demo").innerHTML = x;
+      break;
+      case "9sides":
+        x = Math.floor((Math.random() * 9) + 1);
+        document.getElementById("demo").innerHTML = x;
+      break;
+      case "10sides":
+        x = Math.floor((Math.random() * 10) + 1);
+        document.getElementById("demo").innerHTML = x;
+      break;
+      case "11sides":
+        x = Math.floor((Math.random() * 11) + 1);
+        document.getElementById("demo").innerHTML = x;
+      break;
+      case "12sides":
+        x = Math.floor((Math.random() * 12) + 1);
+        document.getElementById("demo").innerHTML = x;
+      break;
+    }
+}
+      
+document.getElementById("dropdown").innerHTML
+</script>
+          </h2>
+        </p>
+      </body>
+  </head>
+</html>
