@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+      body {
+    background-color: green;
+}  
+
+    </style>
+<title>Ai and vindinoum</title>
+  <link rel="stylesheet" type="text/css" href="navbar.css">
+  <link rel="stylesheet" type="text/css" href="vindinium.css">
+</head>
+<body>
+<!-- My Nav Bar -->
+    <div  id="nav-bar">
+    <h6 id="other-pages" class="text"><strong>My other pages</strong></h6>
+    <ul>
+        <li><a href="index.html">Intro Page</a></li>
+        <li><a href="aboutme.html">About Me</a></li>
+        <li><a href="htmlpage.html">About HTML</a></li>
+        <li><a href="hardware.html">Computer Hardware</a></li>
+        <li><a href="info.html">Info page</a></li>
+        <li><a href="calc.html">Calculator</a></li>
+        <li><a href="todolist.html">To do list</a></li>
+        <li><a href="dice.html">Dice Roller</a></li>
+        <li><a href="vindinium.html">Vindinium</a></li>
+    </ul>
+    </div>
+    <!-- end of Nav Bar -->
+<h1>What is AI</h1>
+<p>As wikipedia states AI is "the intelligence exhibited by machines or software". In simple terms that means code making something do something on its own. 
+An example of this is the game Vindinium which we have been playing and making bots for.</p>
+<h1>What is Vindinium</h1>
+<img src="https://www.google.com/imgres?imgurl=http%3A%2F%2Frwdc2.com%2Ffiles%2Fforest.png&imgrefurl=http%3A%2F%2Frwdc2.com%2Fmath%2F2015%2F06%2F24%2F4russians.html&docid=3dL9DChpsY24OM&tbnid=0dQMdTINBbfrGM%3A&w=393&h=396&safe=active&bih=680&biw=1319&ved=0ahUKEwj7nv3Sj6PMAhUFzWMKHTnfAngQMwgiKAYwBg&iact=mrc&uact=8" style="width:304px;height:228px;">
+<p>Vindinium is an Ai progaming challange. In vindinium you "control" a little bot that goes and tries to collect mines and get gold.</p>
+<h2>My Code</h2>
+<p>
+    var Bot = require('bot');
+var PF = require('pathfinding');
+//var bot = new Bot('8k5u5psa', 'training', 'http://vindinium.org'); //Put your bot's code here and change training to Arena when you want to fight others.
+var bot = new Bot('93lqe452', 'arena', 'http://52.53.211.7:9000'); //Put your bot's code here and change training to Arena when you want to fight others.
+var goDir;
+var Promise = require('bluebird');
+Bot.prototype.botBrain = function() {
+    return new Promise(function(resolve, reject) {
+        _this = bot;
+        //////* Write your bot below Here *//////
+        //////* Set `myDir` in the direction you want to go and then bot.goDir is set to myDir at the bottom *////////
+
+        /*                                      *
+         * This Code is global data!            *
+         *                                      */
+         
+        // Set myDir to what you want and it will set bot.goDir to that direction at the end.  Unless it is "none"
+        var myDir;
+        var myPos = [bot.yourBot.pos.x, bot.yourBot.pos.y];
+
+        var enemyBots = [];
+        if (bot.yourBot.id != 1) enemyBots.push(bot.bot1);
+        if (bot.yourBot.id != 2) enemyBots.push(bot.bot2);
+        if (bot.yourBot.id != 3) enemyBots.push(bot.bot3);
+        if (bot.yourBot.id != 4) enemyBots.push(bot.bot4);
+        
+        //determines who has the most mines
+       var mostMines = enemyBots[0];
+            for (i = 0; i < enemyBots.length; i++) {
+                if (mostMines.mineCount < enemyBots[i].mineCount) {
+                    mostMines = enemyBots[i];
+                }
+            }
+        /*                                      *
+         * This Code Decides WHAT to do         *
+         *                                      */
+        var task;
+        task = "freemines";
+        if (bot.yourBot.life < 60) {
+            task = "gototavern"
+        }
+        else if (mostMines.mineCount < 1) {
+            task = "attachmostmines"
+        }
+        else {
+            task = "freemines"
+        }
+        
+        /*                                      *
+         * This Code Determines HOW to do it    *
+         *                                      */
+
+        // This Code find the nearest freemine and sets myDir toward that direction //
+        if (task === "freemines") {
+            var closestMine = bot.freeMines[0];
+            for (i = 0; i < bot.freeMines.length; i++) {
+                if (bot.findDistance(myPos, closestMine) > bot.findDistance(myPos, bot.freeMines[i])) {
+                    closestMine = bot.freeMines[i];
+                }
+            }
+            console.log("Claiming a Free Mine!");
+            myDir = bot.findPath(myPos, closestMine);
+        }
+// makes my bot go to a tavern once he is lower than 60 health
+        if (task === "gototavern") {
+            var closesttavern = bot.taverns[0];
+            for (i = 0; i < bot.taverns.length; i++) {
+                if (bot.findDistance(myPos, closesttavern) > bot.findDistance(myPos, bot.taverns[i])) {
+                    closesttavern = bot.taverns[i];
+                }
+            }
+            console.log("going to tavern!");
+            myDir = bot.findPath(myPos, closesttavern);
+        }
+        if (task === "attachmostmines") {
+            
+        }
+            console.log("attacking enemy with most mines");
+            myDir = bot.findPath(myPos, mostMines.posArray);
+
+        /*                                                                                                                              *
+         * This Code Sets your direction based on myDir.  If you are trying to go to a place that you can't reach, you move randomly.   *
+         * Otherwise you move in the direction set by your code.  Feel free to change this code if you want.                            */
+        if (myDir === "none") {
+            console.log("Going Random!");
+            var rand = Math.floor(Math.random() * 4);
+            var dirs = ["north", "south", "east", "west"];
+            bot.goDir = dirs[rand];
+        }
+        else {
+            bot.goDir = myDir;
+        }
+
+
+
+        ///////////* DON'T REMOVE ANTYTHING BELOW THIS LINE *//////////////
+        resolve();
+    });
+}
+bot.runGame();
+
+</p>
+</body>
+</html>
