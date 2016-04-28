@@ -5,6 +5,9 @@
       body {
     background-color: green;
 }  
+    div {
+        color: white;
+    }
 
     </style>
 <title>Ai and vindinoum</title>
@@ -23,20 +26,33 @@
         <li><a href="info.html">Info page</a></li>
         <li><a href="calc.html">Calculator</a></li>
         <li><a href="todolist.html">To do list</a></li>
-        <li><a href="dice.html">Dice Roller</a></li>
         <li><a href="vindinium.html">Vindinium</a></li>
+        <li><a href="dice.html">Dice</a></li>
     </ul>
-    </div>
+    </div>  
     <!-- end of Nav Bar -->
 <h1>What is AI</h1>
 <p>As wikipedia states AI is "the intelligence exhibited by machines or software". In simple terms that means code making something do something on its own. 
 An example of this is the game Vindinium which we have been playing and making bots for.</p>
 <h1>What is Vindinium</h1>
-<img src="https://www.google.com/imgres?imgurl=http%3A%2F%2Frwdc2.com%2Ffiles%2Fforest.png&imgrefurl=http%3A%2F%2Frwdc2.com%2Fmath%2F2015%2F06%2F24%2F4russians.html&docid=3dL9DChpsY24OM&tbnid=0dQMdTINBbfrGM%3A&w=393&h=396&safe=active&bih=680&biw=1319&ved=0ahUKEwj7nv3Sj6PMAhUFzWMKHTnfAngQMwgiKAYwBg&iact=mrc&uact=8" style="width:304px;height:228px;">
 <p>Vindinium is an Ai progaming challange. In vindinium you "control" a little bot that goes and tries to collect mines and get gold.</p>
-<h2>My Code</h2>
+<img src="https://www.google.com/imgres?imgurl=http%3A%2F%2Frwdc2.com%2Ffiles%2Fforest.png&imgrefurl=http%3A%2F%2Frwdc2.com%2Fmath%2F2015%2F06%2F24%2F4russians.html&docid=3dL9DChpsY24OM&tbnid=0dQMdTINBbfrGM%3A&w=393&h=396&safe=active&bih=680&biw=1319&ved=0ahUKEwj7nv3Sj6PMAhUFzWMKHTnfAngQMwgiKAYwBg&iact=mrc&uact=8" style="width:304px;height:228px;">
+
+<h2>My Bot</h2>
 <p>
-    var Bot = require('bot');
+    For my bot I made it do 3 simple things. The first this was to capture a unclaimed mine and get gold from it. My second task was that my bot would go to a tavern and refill its health when his health got below 60 health points.
+    my third task was to attack any bot with more than 4 mines. Combine all of these tasks and you get a bot that is extremely drunk from going to the tavern and a ruthless fighter.
+</p>
+<p>
+    This project was never horrible or extremely hard. The hardest part was getting started with the if else statements which were the back bone of this project.
+    The only thing we had to do for this project was to make if else statements. A if else statement means that IF something is true then it will do something and if not it will do the defualt.
+    This project consisted of if else statements so that my bot will go to a tavern IF its health is below 60 or attack a enemy bot IF they more than 4 mines.
+</p>
+<h2>My Code</h2>
+<code>
+    <div>
+        <pre>
+        var Bot = require('bot');
 var PF = require('pathfinding');
 //var bot = new Bot('8k5u5psa', 'training', 'http://vindinium.org'); //Put your bot's code here and change training to Arena when you want to fight others.
 var bot = new Bot('93lqe452', 'arena', 'http://52.53.211.7:9000'); //Put your bot's code here and change training to Arena when you want to fight others.
@@ -77,7 +93,7 @@ Bot.prototype.botBrain = function() {
         if (bot.yourBot.life < 60) {
             task = "gototavern"
         }
-        else if (mostMines.mineCount < 1) {
+        else if (mostMines.mineCount < 4) {
             task = "attachmostmines"
         }
         else {
@@ -137,6 +153,9 @@ Bot.prototype.botBrain = function() {
 }
 bot.runGame();
 
-</p>
+    </pre>
+    </div>
+</code>
+
 </body>
 </html>

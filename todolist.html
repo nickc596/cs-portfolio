@@ -22,36 +22,45 @@
         <li><a href="info.html">Info page</a></li>
         <li><a href="calc.html">Calculator</a></li>
         <li><a href="todolist.html">To do list</a></li>
-        <li><a href="dice.html">Dice Roller</a></li>
         <li><a href="vindinium.html">Vindinium</a></li>
+        <li><a href="dice.html">Dice</a></li>
     </ul>
     </div>
     <!-- end of Nav Bar -->
-  <header><h1></h1></header>
+  <header><h1>My Todo List</h1></header>
+  <hr>
+  <br>
   <section>
     <div id="todolist"></div>
+    <br><hr>
     <form id="myform">
       <div>
-        <div>Add item</div>
+  <!--      <div></div>   -->
         <input type="text" id="newitem" />
-        <input type="submit" />
-        <p>
+        <input type="submit" value="Add Item">
+        
+          
 <!-- lets you pick the color -->
+        
         <select name="txtcolor" id="txtcolor" onChange="colorVariable = this.value">
         <option value="black">Black</option>
         <option value="red">Red</option>
-        <option value="green">Green</option>
+        <option value="yellow">Yellow</option>
         <option value="blue">Blue</option>
         </select> 
 
-        </p>
-        <p id="demo"></p>
+<!-- lets you make it bold -->
+
+<input type="radio" name="fontset" id="font1" checked> normal
+<input type="radio" name="fontset" id="font2"> bold
+
+        
+ <!--       <p id="demo"></p>  -->
         
       </div>
     </form>
   </section>
-  <footer>
-  </footer>
+  <footer></footer>
     
     
 <script src="todolist.js"></script>
